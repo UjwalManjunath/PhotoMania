@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class Photographer;
 
 @interface Photo : NSManagedObject
 
@@ -16,6 +17,6 @@
 @property (nonatomic, retain) NSString * subtitle;
 @property (nonatomic, retain) NSString * imagURL;
 @property (nonatomic, retain) NSString * unique;
-@property (nonatomic, retain) NSManagedObject *whoTook;
+@property (nonatomic, retain) Photographer *whoTook;
 
 @end
