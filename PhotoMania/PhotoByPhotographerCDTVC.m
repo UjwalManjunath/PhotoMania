@@ -33,7 +33,7 @@
     if(indexPath){
         if([segue.identifier isEqualToString:@"showImage"]){
             Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
-            NSURL  *url = [NSURL fileURLWithPath:photo.imagURL];
+            NSURL  *url = [NSURL URLWithString: photo.imagURL];
             if([segue.destinationViewController respondsToSelector:@selector(setImageURL:)]){
                 [segue.destinationViewController performSelector:@selector(setImageURL:) withObject:url];
                  [segue.destinationViewController setTitle:photo.title];

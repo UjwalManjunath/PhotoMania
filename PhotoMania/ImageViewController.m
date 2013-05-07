@@ -8,6 +8,7 @@
 
 #import "ImageViewController.h"
 #import "AttributedStringViewController.h"
+#import "Photo.h"
 
 @interface ImageViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -90,6 +91,7 @@
         dispatch_async(imageLoaderQ, ^{
            
             [UIApplication sharedApplication].networkActivityIndicatorVisible =YES; //bad
+    
             NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
             UIImage *image = [[UIImage alloc]initWithData:imageData];
             [UIApplication sharedApplication].networkActivityIndicatorVisible=NO; //bad
