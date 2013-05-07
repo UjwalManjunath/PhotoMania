@@ -50,7 +50,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jj1-rA-vIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="164" y="-269"/>
+            <point key="canvasLocation" x="-106" y="-275"/>
         </scene>
         <!--Photo By PhotographerCDTVC-->
         <scene sceneID="IVY-O3-hTn">
@@ -61,14 +61,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Photo" id="kWX-Vi-wqO">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Photo" id="kWX-Vi-wqO">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="L7F-aA-EaU" kind="push" identifier="showImage" id="X2r-3E-Ght"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -80,21 +83,45 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5iQ-7I-W4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="517" y="-184"/>
+            <point key="canvasLocation" x="383" y="-280"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="jdK-60-mxC">
+        <!--Image View Controller-->
+        <scene sceneID="DSu-ha-Fd3">
             <objects>
-                <viewController id="Va9-JY-VqP" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aaK-sj-maS">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                <viewController id="L7F-aA-EaU" customClass="ImageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bDA-72-bTx">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zxF-QK-vUU">
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wS1-cH-wfI"/>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="wS1-cH-wfI" secondAttribute="trailing" constant="142" id="NiY-lT-L8S"/>
+                                    <constraint firstAttribute="bottom" secondItem="wS1-cH-wfI" secondAttribute="bottom" constant="233" id="gU1-az-QVn"/>
+                                    <constraint firstItem="wS1-cH-wfI" firstAttribute="leading" secondItem="zxF-QK-vUU" secondAttribute="leading" constant="141" id="pmJ-p8-gHK"/>
+                                    <constraint firstItem="wS1-cH-wfI" firstAttribute="centerY" secondItem="zxF-QK-vUU" secondAttribute="centerY" type="default" id="xnR-aG-zcv"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zxF-QK-vUU" firstAttribute="bottom" secondItem="bDA-72-bTx" secondAttribute="bottom" type="default" id="5Rz-yz-N1B"/>
+                            <constraint firstItem="zxF-QK-vUU" firstAttribute="leading" secondItem="bDA-72-bTx" secondAttribute="leading" type="default" id="Dz1-ui-yfV"/>
+                            <constraint firstItem="zxF-QK-vUU" firstAttribute="trailing" secondItem="bDA-72-bTx" secondAttribute="trailing" type="default" id="FiY-GX-3Nd"/>
+                            <constraint firstItem="zxF-QK-vUU" firstAttribute="top" secondItem="bDA-72-bTx" secondAttribute="top" type="default" id="Flf-Or-S6K"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="rJg-fb-bHI"/>
+                    <connections>
+                        <outlet property="scrollView" destination="zxF-QK-vUU" id="aNk-tb-tmZ"/>
+                        <outlet property="spinner" destination="wS1-cH-wfI" id="H00-92-Jzn"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dlR-Dt-Oth" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5bQ-Aa-1C9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="965" y="-172"/>
+            <point key="canvasLocation" x="876" y="-269"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u15-Ks-aZ9">
@@ -112,7 +139,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gPr-S8-nZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-320" y="-223"/>
+            <point key="canvasLocation" x="-622" y="-269"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

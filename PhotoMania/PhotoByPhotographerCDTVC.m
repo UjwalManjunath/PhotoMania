@@ -22,6 +22,27 @@
     [self setupFetchedResultsController];
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = nil;
+    
+    if( [sender isKindOfClass:[UITableViewCell class]]){
+        indexPath = [self.tableView indexPathForCell:sender];
+    }
+    
+    if(indexPath){
+        if([segue.identifier isEqualToString:@"showImage"]){
+            Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
+            NSURL  *url = [NSURL fileURLWithPath:photo.imagURL];
+            if([segue.destinationViewController respondsToSelector:@selector(setImageURL:)]){
+                [segue.destinationViewController performSelector:@selector(setImageURL:) withObject:url];
+                 [segue.destinationViewController setTitle:photo.title];
+            }
+        }
+    }
+    
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Photo"];

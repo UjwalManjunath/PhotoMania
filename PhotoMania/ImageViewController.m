@@ -11,13 +11,13 @@
 
 @interface ImageViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property(strong,nonatomic) UIImageView *imageView;
+@property(nonatomic,strong) UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *titleBarButtonItem;
 @property(nonatomic,strong) UIPopoverController *urlPopOver;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *splitViewBarButtonItem;
-
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+
 
 @end
 
@@ -72,10 +72,12 @@
     [self resetImage];
 }
 
+
+
 -(UIImageView *)imageView
 {
-    if(!_imageView ) _imageView = [[UIImageView alloc]initWithFrame:CGRectZero];
-        return _imageView;
+    if(!_imageView) _imageView = [[UIImageView alloc]initWithFrame:CGRectZero];
+    return _imageView;
 }
 -(void) resetImage
 {
@@ -84,8 +86,9 @@
         self.imageView.image=nil;
         NSURL *imageUrl = self.imageURL;
         [self.spinner startAnimating];
-        dispatch_queue_t imageFetchQ = dispatch_queue_create("image fetcher", NULL);
-        dispatch_async(imageFetchQ, ^{
+        dispatch_queue_t imageLoaderQ = dispatch_queue_create("image Loader", NULL);
+        dispatch_async(imageLoaderQ, ^{
+           
             [UIApplication sharedApplication].networkActivityIndicatorVisible =YES; //bad
             NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
             UIImage *image = [[UIImage alloc]initWithData:imageData];
@@ -122,7 +125,7 @@
     [self.scrollView addSubview:self.imageView];
     self.scrollView.minimumZoomScale = 0.2;
     self.scrollView.maximumZoomScale = 5.0;
-    self.scrollView.delegate    = self;
+    self.scrollView.delegate = self;
     [self resetImage];
     self.titleBarButtonItem.title = self.title;
     [self setsplitViewBarButtonItem:self.splitViewBarButtonItem];
