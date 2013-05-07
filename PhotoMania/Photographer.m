@@ -2,7 +2,7 @@
 //  Photographer.m
 //  PhotoMania
 //
-//  Created by Ujwal Manjunath on 3/17/13.
+//  Created by Ujwal Manjunath on 5/6/13.
 //  Copyright (c) 2013 Ujwal Manjunath. All rights reserved.
 //
 
